@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
+let path = 'https://rojraman-dev.grnoc.iu.edu/oess/';
 async function getUsers() {
     let url = `${path}services/admin/admin.cgi?method=get_users`;
 
@@ -20,9 +21,36 @@ async function getUsers() {
 class App extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+	   users:{
+                    "email_address":"",
+                    "status":"",
+                    "type":"",
+                    "user_id":"",
+                    "family_name":"",
+                    "first_name":""
+                }
+	};
     }
+   
+    fetchUsers(props,currComponent){
+	getUsers().then(function(u){
+		currComponent.setState({
+			users:u
+		})
+	});
+    }   
+ 
+    componentDidMount(props){
+	this.fetchUsers(props, this);
+     }
+
+    componentDidUpdate(){
+	
+     }
+      
        render() {
+	console.log(this.state.users);
         return <h1>Hello</h1>;
 	}
 }
