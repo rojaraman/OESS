@@ -16,7 +16,7 @@ export default class UserTable extends React.Component {
     getHeader(){
       var keys = this.getKeys();
       return keys.map((key, index)=>{
-        return <th key={key}>{key.toUpperCase()}</th>
+        return <th scope="col" key={key}>{key}</th>
       })
     }
     
@@ -34,7 +34,7 @@ export default class UserTable extends React.Component {
 	
         return (
           <div>
-            <table>
+            <table class="table table-striped">
             <thead>
               <tr>{this.getHeader()}</tr>
             </thead>
