@@ -34,7 +34,7 @@ export default class UserTable extends React.Component {
 	
         return (
           <div>
-            <table class="table table-striped">
+            <table className="table table-striped">
             <thead>
               <tr>{this.getHeader()}</tr>
             </thead>
